@@ -1,0 +1,15 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "First project Hexlet <3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "module",
+    "url": "qa-auto-engineer-javascript-project-44"
+  },
+  "author": "",
+  "license": "ISC"
+}
