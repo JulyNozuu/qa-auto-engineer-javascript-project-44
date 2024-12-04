@@ -11,5 +11,8 @@
     "url": "qa-auto-engineer-javascript-project-44"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bin": {
+  "brain-games": "bin/brain-games.js"
+}
 }
