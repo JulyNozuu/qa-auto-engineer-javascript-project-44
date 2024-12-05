@@ -6,13 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "repository": {
-    "type": "module",
+    "type": "git",
     "url": "qa-auto-engineer-javascript-project-44"
   },
   "author": "",
   "license": "ISC",
   "bin": {
-  "brain-games": "bin/brain-games.js"
-}
+    "brain-games": "bin/brain-games.js"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
