@@ -1,7 +1,8 @@
 import readlineSync from 'readline-sync';
-const cli= () => {
+
+const cli = () => {
 // Wait for user's response.
-var userName = readlineSync.question('May I have your name? ');
-console.log('Hi ' + userName + '!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hi ${userName}!`);
 };
-export {cli};
+export default cli;
