@@ -42,12 +42,7 @@ export default [
           allow: ['__filename', '__dirname'],
         },
       ],
-      'import/extensions': [
-        'error',
-        {
-          js: 'always',
-        },
-      ],
+      'import/extensions': 'off',
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off',
       'no-console': 'off',
