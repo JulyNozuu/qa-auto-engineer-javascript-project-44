@@ -7,6 +7,6 @@ brain-even:
 brain-calc:
 	node bin/brain-calc.js
 publish:
-	npm publish --dry-runhb
+	npm publish --dry-run
 make lint:
 	npx eslint .
