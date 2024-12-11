@@ -1,24 +1,18 @@
 import readlineSync from 'readline-sync';
-import cli from '../src/cli.js';
+import {greeting} from './index.js';
+import {getRandomInt} from './index.js';
+import {check} from './index.js';
 
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min)
-};
 
-const greetingEven = () => {
-    // Wait for user's response.
-    const userName = readlineSync.question('May I have your name? ');
-      console.log(`Hello, ${userName}!`);
-      console.log ('Answer "yes" if the number is even, otherwise answer "no".');
-      return userName;
-    };
-    export {greetingEven};
+const brainEven = () => {
 
-const even = () => {
-    let correctAnswer;
-    let userName = greetingEven();
+    // Приветствуем игрока
+    let userName = greeting('Answer "yes" if the number is even, otherwise answer "no".'); 
+
+    // Задаем переменную "правильного ответа"
+    let correctAnswer; 
+    
+    // Логика игры
     for (let i = 1; i<4; i+=1){
     let random = getRandomInt(1,1000);
     console.log (`Question: ${random}`)
@@ -30,8 +24,8 @@ const even = () => {
     } else {console.log(`is wrong answer ;(. Correct answer was \'no or yes\'. \nLet\'s try again, ${userName}!`);return;
 }
     }
-    if (correctAnswer ==3){console.log(`Congratulations, ${userName}!`);
-};
+    // Условия выйгрыша
+    check(correctAnswer, userName);
 };
 
-export default even;
+export default brainEven;
