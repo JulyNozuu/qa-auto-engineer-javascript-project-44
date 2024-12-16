@@ -1,7 +1,7 @@
 run:
 	npm ci
 brain-games:
-	node code/bin/brain-games/brain-games.js
+	node code/bin/brain-games.js
 brain-even:
 	node code/bin/brain-games/brain-even.js
 brain-calc:
