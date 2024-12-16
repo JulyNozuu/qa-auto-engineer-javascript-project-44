@@ -18,11 +18,11 @@ function getRandomOper() {
 }
 export { getRandomOper };
 
-function NOD(x, y) {
+const NOD = (x, y) => {
   if (y > x) return NOD(y, x);
   if (!y) return x;
   return NOD(y, x % y);
-}
+};
 export { NOD };
 
 const greeting = (rule) => {
@@ -49,3 +49,17 @@ const progression = (a, n, d) => {
   return result;
 };
 export { progression };
+
+// eslint-disable-next-line consistent-return
+const prime = (test) => {
+  let numberОfDivisors = 0;
+  // eslint-disable-next-line no-unreachable-loop, no-plusplus
+  for (let i = 2; i < test; i += 1) {
+    if (test % i == 0) {
+      numberОfDivisors += 1;
+    }
+  }
+  if (numberОfDivisors !== 0) { return 'no'; }
+  return 'yes';
+};
+export { prime };
