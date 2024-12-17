@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "First project Hexlet <3",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "module": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
   "repository": {
