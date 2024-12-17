@@ -27,7 +27,7 @@ export { NOD };
 
 const greeting = (rule) => {
   // Wait for user's response.
-  const userName = readlineSync.question('May I have your name? ');
+  const userName = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log(rule);
   return userName;
