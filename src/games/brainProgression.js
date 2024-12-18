@@ -16,9 +16,9 @@ const brainProgression = () => {
 
   // Логика игры
   for (let i = 1; i < 4; i += 1) {
-    let arrayProgression = progression(getRandomInt(1, 100), 10, 2);
+    let arrayProgression = progression(getRandomInt(1, 100), getRandomInt(1, 2));
 
-    let indexHiddenNumber = getRandomInt(0, 9);
+    let indexHiddenNumber = getRandomInt(0, 10);
     let result = arrayProgression[indexHiddenNumber];
 
     arrayProgression.splice(indexHiddenNumber, 1, '..');
