@@ -36,7 +36,7 @@ const brainProgression = () => {
       correctAnswer = i;
     } else {
       console.log(
-        `\'${(Question.toString())}\'  is wrong answer ;(. Correct answer was \'${result.toString()}\'. \nLet\'s try again, ${userName}!`,
+        `\'${Question}\'  is wrong answer ;(. Correct answer was \'${parseInt(result.toString())}\'. \nLet\'s try again, ${userName}!`,
       );
       return;
     }
