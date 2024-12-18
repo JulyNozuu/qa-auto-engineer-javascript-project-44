@@ -44,7 +44,7 @@ export { check };
 const progression = (a, n, d) => {
   const result = [];
   for (let i = 1; i < n; i += 1) {
-    a += (i - 1) * d; result.push(a);
+    a += d; result.push(a);
   }
   return result;
 };
