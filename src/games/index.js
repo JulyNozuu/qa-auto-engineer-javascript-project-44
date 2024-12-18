@@ -41,8 +41,7 @@ const check = (correctAnswer, userName) => {
 };
 export { check };
 
-const progression = (a, d) => {
-  const n = getRandomInt(5, 10);
+const progression = (a, n, d) => {
   const result = [];
   for (let i = 1; i < n; i += 1) {
     a += (i - 1) * d; result.push(a);
