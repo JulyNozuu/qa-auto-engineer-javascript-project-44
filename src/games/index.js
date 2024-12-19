@@ -4,62 +4,24 @@
 /* eslint-disable no-param-reassign */
 import readlineSync from 'readline-sync';
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
-}
-export { getRandomInt };
-
-function getRandomOper() {
-  const array = ['+', '-', '*'];
-  const randomItem = array[Math.floor(Math.random() * array.length)];
-  return randomItem;
-}
-export { getRandomOper };
-
-const NOD = (x, y) => {
-  if (y > x) return NOD(y, x);
-  if (!y) return x;
-  return NOD(y, x % y);
-};
-export { NOD };
-
-const greeting = (rule) => {
-  // Wait for user's response.
+const game = (rule, gameLogic) => {
   const userName = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log(rule);
-  return userName;
-};
-export { greeting };
-
-const check = (correctAnswer, userName) => {
+  let correctAnswer;
+  for (let i = 1; i < 4; i += 1) {
+    const [randomNumber, result] = gameLogic();
+    console.log(`Question: ${randomNumber}`);
+    const answer = readlineSync.question('Your answer: ');
+    if (result == answer) {
+      console.log('Correct!'); correctAnswer = i;
+    } else {
+      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}. \nLet\'s try again, ${userName}!`); return;
+    }
+  }
   if (correctAnswer == 3) {
     console.log(`Congratulations, ${userName}!`);
   }
 };
-export { check };
-
-const progression = (a, n, d) => {
-  const result = [];
-  for (let i = 1; i < n; i += 1) {
-    a += d; result.push(a);
-  }
-  return result;
-};
-export { progression };
-
-// eslint-disable-next-line consistent-return
-const prime = (test) => {
-  let numberОfDivisors = 0;
-  // eslint-disable-next-line no-unreachable-loop, no-plusplus
-  for (let i = 2; i < test; i += 1) {
-    if (test % i == 0) {
-      numberОfDivisors += 1;
-    }
-  }
-  if (numberОfDivisors !== 0) { return 'no'; }
-  return 'yes';
-};
-export { prime };
+// eslint-disable-next-line import/prefer-default-export
+export { game };

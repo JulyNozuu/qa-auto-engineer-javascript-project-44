@@ -1,42 +1,30 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-useless-escape */
-/* eslint-disable prefer-const */
 /* eslint-disable eqeqeq */
-import readlineSync from 'readline-sync';
+
 import {
-  greeting, getRandomInt, check, NOD,
+  game,
 } from './index.js';
 
-const brainGcd = () => {
-  // Приветствуем игрока
-  const userName = greeting('Find the greatest common divisor of given numbers.');
+export default () => {
+  const rule = 'Find the greatest common divisor of given numbers.';
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  const NOD = (x, y) => {
+    if (y > x) return NOD(y, x);
+    if (!y) return x;
+    return NOD(y, x % y);
+  };
 
-  // Задаем переменную "правильного ответа"
-  let correctAnswer;
-
-  // Логика игры
-  for (let i = 1; i < 4; i += 1) {
-    let result;
+  const gameLogic = () => {
     const randomNumber1 = getRandomInt(1, 1000);
     const randomNumber2 = getRandomInt(1, 1000);
-    result = NOD(randomNumber1, randomNumber2);
-
-    console.log(`Question: ${randomNumber1} ${randomNumber2}`);
-    const Question = readlineSync.question('Your answer: ');
-
-    if (result == Question) {
-      console.log('Correct!');
-      correctAnswer = i;
-    } else {
-      console.log(
-        `${Question} is wrong answer ;(. Correct answer was ${result}. \nLet\'s try again, ${userName}!`,
-      );
-      return;
-    }
-  }
-
-  // Условия выйгрыша
-
-  check(correctAnswer, userName);
+    const result = NOD(randomNumber1, randomNumber2);
+    const question = `${randomNumber1} ${randomNumber2}`;
+    return [question, result];
+  };
+  game(rule, gameLogic);
 };
-
-export default brainGcd;

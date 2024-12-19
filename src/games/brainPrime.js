@@ -1,33 +1,36 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-useless-escape */
 /* eslint-disable eqeqeq */
-import readlineSync from 'readline-sync';
+
 import {
-  greeting, getRandomInt, check, prime,
+  game,
 } from './index.js';
 
-const brainPrime = () => {
-  // Приветствуем игрока
-  const userName = greeting('Answer "yes" if given number is prime. Otherwise answer "no".');
+export default () => {
+  const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  // Задаем переменную "правильного ответа"
-  let correctAnswer;
-
-  // Логика игры
-  for (let i = 1; i < 4; i += 1) {
-    const randomNumber = getRandomInt(1, 1000);
-    const result = prime(randomNumber);
-    console.log(`Question: ${randomNumber}`);
-    const Question = readlineSync.question('Your answer: ');
-    if (result == Question) {
-      console.log('Correct!'); correctAnswer = i;
-    } else {
-      console.log(`${Question} is wrong answer ;(. Correct answer was ${result}. \nLet\'s try again, ${userName}!`); return;
-    }
-
-    // Условия выйгрыша
-
-    check(correctAnswer, userName);
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
   }
-};
 
-export default brainPrime;
+  const prime = (test) => {
+    let numberОfDivisors = 0;
+    // eslint-disable-next-line no-unreachable-loop, no-plusplus
+    for (let i = 2; i < test; i += 1) {
+      if (test % i == 0) {
+        numberОfDivisors += 1;
+      }
+    }
+    if (numberОfDivisors !== 0) { return 'no'; }
+    return 'yes';
+  };
+
+  const gameLogic = () => {
+    const question = getRandomInt(1, 1000);
+    const result = prime(question);
+    return [question, result];
+  };
+  game(rule, gameLogic);
+};

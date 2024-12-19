@@ -1,48 +1,26 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-useless-escape */
 /* eslint-disable eqeqeq */
-/* eslint-disable quotes */
-import readlineSync from "readline-sync";
-import { greeting, getRandomInt, check } from "./index.js";
 
-const brainEven = () => {
-  // Приветствуем игрока
-  const userName = greeting(
-    'Answer "yes" if the number is even, otherwise answer "no".',
-  );
+import {
+  game,
+} from './index.js';
 
-  // Задаем переменную "правильного ответа"
-  let correctAnswer;
+export default () => {
+  const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  // Логика игры
-  for (let i = 1; i < 4; i += 1) {
-    const random = getRandomInt(1, 1000);
-    console.log(`Question: ${random}`);
-    const Question = readlineSync.question("Your answer: ");
-    if (random % 2 == 0 && Question == "yes") {
-      console.log("Correct!");
-      correctAnswer = i;
-    } else if (random % 2 !== 0 && Question == "no") {
-      console.log("Correct!");
-      correctAnswer = i;
-    } else if (random % 2 !== 0 && Question == "yes") {
-      console.log(
-        `\'yes\' is wrong answer ;(. Correct answer was \'no\'. \nLet\'s try again, ${userName}!`,
-      );
-      return;
-    } else if (random % 2 == 0 && Question == "no") {
-      console.log(
-        `\'no\' is wrong answer ;(. Correct answer was \'yes\'. \nLet\'s try again, ${userName}!`,
-      );
-      return;
-    } else {
-      console.log(
-        `is wrong answer ;(. Correct answer was \'no or yes\'. \nLet\'s try again, ${userName}!`,
-      );
-      return;
-    }
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
   }
-  // Условия выйгрыша
-  check(correctAnswer, userName);
+  const gameLogic = () => {
+    const question = getRandomInt(1, 1000);
+    let result;
+    if (question % 2 == 0) {
+      result = 'yes';
+    } else { result = 'no'; }
+    return [question, result];
+  };
+  game(rule, gameLogic);
 };
-
-export default brainEven;

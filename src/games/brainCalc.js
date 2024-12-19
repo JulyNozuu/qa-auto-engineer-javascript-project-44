@@ -1,23 +1,31 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-useless-escape */
 /* eslint-disable eqeqeq */
-import readlineSync from 'readline-sync';
+
 import {
-  greeting, getRandomInt, check, getRandomOper,
+  game,
 } from './index.js';
 
-const brainCalc = () => {
-  // Приветствуем игрока
-  const userName = greeting('What is the result of the expression?');
+export default () => {
+  const rule = 'What is the result of the expression?';
 
-  // Задаем переменную "правильного ответа"
-  let correctAnswer;
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
 
-  // Логика игры
-  for (let i = 1; i < 4; i += 1) {
+  function getRandomOper() {
+    const array = ['+', '-', '*'];
+    const randomItem = array[Math.floor(Math.random() * array.length)];
+    return randomItem;
+  }
+
+  const gameLogic = () => {
     let result;
+    const randomOperator = getRandomOper();
     const randomTerms1 = getRandomInt(1, 1000);
     const randomTerms2 = getRandomInt(1000, 2000);
-    const randomOperator = getRandomOper();
     if (randomOperator == '+') {
       result = Number(randomTerms1) + Number(randomTerms2);
     } else if (randomOperator == '-') {
@@ -25,18 +33,8 @@ const brainCalc = () => {
     } else {
       result = Number(randomTerms1) * Number(randomTerms2);
     }
-    console.log(`Question: ${randomTerms1} ${randomOperator} ${randomTerms2}`);
-    const Question = readlineSync.question('Your answer: ');
-
-    if (result == Question) {
-      console.log('Correct!'); correctAnswer = i;
-    } else {
-      console.log(`${Question} is wrong answer ;(. Correct answer was ${result}. \nLet\'s try again, ${userName}!`); return;
-    }
-
-    // Условия выйгрыша
-    check(correctAnswer, userName);
-  }
+    const question = `${randomTerms1} ${randomOperator} ${randomTerms2}`;
+    return [question, result];
+  };
+  game(rule, gameLogic);
 };
-
-export default brainCalc;
