@@ -1,18 +1,12 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-useless-escape */
-/* eslint-disable eqeqeq */
-
 import {
   game,
 } from './index.js';
+import {
+  getRandomInt,
+} from './random.js';
 
 export default () => {
   const rule = 'Find the greatest common divisor of given numbers.';
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  }
   const NOD = (x, y) => {
     if (y > x) return NOD(y, x);
     if (!y) return x;
