@@ -1,9 +1,7 @@
 import {
   game,
 } from './index.js';
-import {
-  getRandomInt,
-} from './random.js';
+import getRandomInt from './random.js';
 
 function isEven(number) {
   let expression;

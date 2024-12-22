@@ -1,9 +1,7 @@
 import {
   game,
 } from './index.js';
-import {
-  getRandomInt,
-} from './random.js';
+import getRandomInt from './random.js';
 
 export default () => {
   const rule = 'Find the greatest common divisor of given numbers.';

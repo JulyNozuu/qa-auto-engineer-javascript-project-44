@@ -2,9 +2,7 @@ import {
   game,
 } from './index.js';
 
-import {
-  getRandomInt,
-} from './random.js';
+import getRandomInt from './random.js';
 
 export default () => {
   const rule = 'What is the result of the expression?';
