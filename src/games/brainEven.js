@@ -4,11 +4,7 @@ import {
 import getRandomInt from './random.js';
 
 function isEven(number) {
-  let expression;
-  if (number % 2 === 0) {
-    expression = 'yes';
-  } else { expression = 'no'; }
-  return expression;
+  return Boolean(number % 2 === 0);
 }
 
 export default () => {
@@ -16,7 +12,7 @@ export default () => {
 
   const gameLogic = () => {
     const question = getRandomInt(1, 1000);
-    const result = isEven(question);
+    const result = isEven(question) ? 'yes' : 'no';
     return [question, result];
   };
   game(rule, gameLogic);

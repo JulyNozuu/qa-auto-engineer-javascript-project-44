@@ -26,8 +26,8 @@ export default () => {
     arrayProgression.splice(indexHiddenNumber, 1, '..');
 
     const arrayToString = arrayProgression.toString();
-    // eslint-disable-next-line no-useless-escape
-    const re = /\,/gi;
+    const newLocal = /,/gi;
+    const re = newLocal;
     const newrrayToString = arrayToString.replace(re, ' ');
     const question = `${newrrayToString}`;
     return [question, result];
